@@ -1,10 +1,18 @@
 import type { RequestHandler } from "express";
-import { create } from "../models/messages.ts";
+import DB from "../models/messages.ts";
+
+type RequestBody = { user: string, message: string };
 
 const createMessage: RequestHandler = async (req, res) => {
-  const searchParams = req.query;
+  const {user, message} = req.body as RequestBody;
 
-  console.log(searchParams);
+  const success = await DB.createRow("messages", {
+    text: message,
+    username: user,
+    added: new Date()
+  })
+
+  res.redirect("/");
 }
 
 export default createMessage

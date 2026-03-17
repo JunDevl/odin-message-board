@@ -1,8 +1,8 @@
 import type { RequestHandler } from "express";
-import { retrieveAll } from "../models/messages.ts";
+import DB from "../models/messages.ts";
 
 const getMessages: RequestHandler = async (req, res) => {
-  const messages = await retrieveAll();
+  const messages = await DB.retrieveAll("messages");
 
   res.render("index", {messages});
 }
