@@ -8,4 +8,4 @@ indexRouter.get("/", getMessages)
 
 indexRouter.get("/:messageID", showMessage);
 
-export default indexRouter;
+export {indexRouter};

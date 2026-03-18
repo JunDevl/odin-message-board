@@ -8,4 +8,4 @@ addMessageRouter.get("/", (_, res) => {
 })
 addMessageRouter.post("/", createMessage);
 
-export default addMessageRouter;
+export {addMessageRouter};
