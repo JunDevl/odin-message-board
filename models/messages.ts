@@ -42,14 +42,14 @@ const generateDatabase = <TableName extends string, T extends IdentifiableObject
   async function createRow(table: TableName, item: Omit<T, "id">) {
     if (!db[table]) throw new Error(`Table ${table} doesn't exist on this database.`);
 
-    if (!db[table][0]) return;
+    if (!db[table][0]) return false;
 
     let id: T["id"];
 
     if (typeof db[table][0].id === "number") id = db[table].length + 1;
     else id = crypto.randomUUID();
 
-    return db[table].push({id, ...item} as T);
+    return !!db[table].push({id, ...item} as T);
   }
 
   return {retrieveRow, retrieveAll, createRow};
