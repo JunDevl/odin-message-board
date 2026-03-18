@@ -3,7 +3,7 @@ import createMessage from "../controllers/createMessage.ts";
 
 const addMessageRouter = Router();
 
-addMessageRouter.get("/", (req, res) => {
+addMessageRouter.get("/", (_, res) => {
   res.render("form");
 })
 addMessageRouter.post("/", createMessage);
