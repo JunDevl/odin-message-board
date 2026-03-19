@@ -1,6 +1,6 @@
 const {Router} = require("express");
-const getMessages = require("../controllers/getMessages.ts");
-const showMessage = require("../controllers/showMessage.ts");
+const getMessages = require("../controllers/getMessages");
+const showMessage = require("../controllers/showMessage");
 
 const indexRouter = Router();
 

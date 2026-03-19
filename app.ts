@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path")
 
-const indexRouter = require("./routes/indexRouter.ts");
-const addMessageRouter = require("./routes/addMessageRouter.ts");
+const indexRouter = require("./routes/indexRouter");
+const addMessageRouter = require("./routes/addMessageRouter");
 
 const app = express();
 

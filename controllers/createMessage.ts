@@ -1,4 +1,4 @@
-const DB = require("../models/messages.ts");
+const DB = require("../models/messages");
 
 type RequestBody = { user: string, message: string };
 

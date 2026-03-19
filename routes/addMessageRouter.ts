@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const createMessage = require("../controllers/createMessage.ts");
+const createMessage = require("../controllers/createMessage");
 
 const addMessageRouter = Router();
 

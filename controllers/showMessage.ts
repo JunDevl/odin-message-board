@@ -1,4 +1,4 @@
-const DB = require("../models/messages.ts");
+const DB = require("../models/messages");
 
 const showMessage = async (req: any, res:any) => {
   const messageID = Number(req.params["messageID"]);
