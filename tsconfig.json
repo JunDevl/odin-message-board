@@ -13,8 +13,8 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
 
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
+    "rewriteRelativeImportExtensions": true,
 
     "isolatedModules": true,
 
@@ -25,7 +25,10 @@
 
     "types": ["node"],
 
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+
+    "outDir": "./dist",
+    "rootDir": "./"
   },
   "$schema": "https://www.schemastore.org/tsconfig",
   "_version": "2.0.0"
