@@ -1,4 +1,4 @@
-const DB = require("../models/messages");
+import DB from "../models/messages.js";
 
 const getMessages = async (_/*: any*/, res/*: any*/) => {
   const messages = await DB.retrieveAll("messages");
@@ -6,4 +6,4 @@ const getMessages = async (_/*: any*/, res/*: any*/) => {
   res.render("index", { messages });
 };
 
-module.exports = getMessages;
+export default getMessages;

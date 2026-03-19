@@ -57,4 +57,4 @@ const generateDatabase = /*<TableName extends string, T extends IdentifiableObje
 
 const DB = generateDatabase({ tableName: "messages", data: messages });
 
-exports = DB;
+export default DB;

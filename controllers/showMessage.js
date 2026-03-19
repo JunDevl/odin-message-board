@@ -1,4 +1,4 @@
-const DB = require("../models/messages");
+import DB from "../models/messages.js";
 
 const showMessage = async (req/*: any*/, res/*: any*/) => {
   const messageID = Number(req.params["messageID"]);
@@ -10,4 +10,4 @@ const showMessage = async (req/*: any*/, res/*: any*/) => {
   res.render("message", { message });
 };
 
-module.exports = showMessage;
+export default showMessage;

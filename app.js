@@ -1,13 +1,15 @@
-const express = require("express");
-const path = require("path")
+import express from "express";
+import path from "path";
 
-const indexRouter = require("./routes/indexRouter");
-const addMessageRouter = require("./routes/addMessageRouter");
+import indexRouter from "./routes/indexRouter.js";
+import addMessageRouter from "./routes/addMessageRouter.js";
+
+const __dirname = path.resolve();
 
 const app = express();
 
 const PORT = 3000;
- 
+
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));

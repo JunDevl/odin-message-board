@@ -1,6 +1,6 @@
-const {Router} = require("express");
-const getMessages = require("../controllers/getMessages");
-const showMessage = require("../controllers/showMessage");
+import { Router } from "express";
+import getMessages from "../controllers/getMessages.js";
+import showMessage from "../controllers/showMessage.js";
 
 const indexRouter = Router();
 
@@ -8,4 +8,4 @@ indexRouter.get("/", getMessages);
 
 indexRouter.get("/:messageID", showMessage);
 
-module.exports = indexRouter;
+export default indexRouter;

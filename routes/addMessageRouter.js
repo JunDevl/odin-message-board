@@ -1,5 +1,5 @@
-const { Router } = require("express");
-const createMessage = require("../controllers/createMessage");
+import { Router } from "express";
+import createMessage from "../controllers/createMessage.js";
 
 const addMessageRouter = Router();
 
@@ -8,4 +8,4 @@ addMessageRouter.get("/", (_/*: any*/, res/*: any*/) => {
 });
 addMessageRouter.post("/", createMessage);
 
-module.exports = addMessageRouter;
+export default addMessageRouter;

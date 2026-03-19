@@ -1,4 +1,4 @@
-const DB = require("../models/messages");
+import DB from "../models/messages.js";
 
 // type RequestBody = { user: string, message: string };
 
@@ -14,4 +14,4 @@ const createMessage = async (req/*: any*/, res/*: any*/) => {
   res.redirect("/");
 };
 
-module.exports = createMessage;
+export default createMessage;
