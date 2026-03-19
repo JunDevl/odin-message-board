@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "node app.ts",
-    "build": "tsc",
-    "start": "node app.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JunDevl/odin-message-board.git"
@@ -21,9 +17,7 @@
   },
   "homepage": "https://github.com/JunDevl/odin-message-board#readme",
   "dependencies": {
-    "@types/express": "^5.0.6",
     "ejs": "^5.0.1",
-    "express": "^5.2.1",
-    "typescript": "^5.9.3"
+    "express": "^5.2.1"
   }
 }
