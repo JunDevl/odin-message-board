@@ -1,9 +1,8 @@
-import type { RequestHandler } from "express";
-import DB from "../models/messages.ts";
+const DB = require("../models/messages.ts");
 
 type RequestBody = { user: string, message: string };
 
-const createMessage: RequestHandler = async (req, res) => {
+const createMessage = async (req: any, res: any) => {
   const {user, message} = req.body as RequestBody;
 
   const success = await DB.createRow("messages", {
@@ -15,4 +14,4 @@ const createMessage: RequestHandler = async (req, res) => {
   res.redirect("/");
 }
 
-export default createMessage
+module.exports = createMessage;

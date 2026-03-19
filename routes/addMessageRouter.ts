@@ -1,11 +1,11 @@
-import { Router } from "express";
-import createMessage from "../controllers/createMessage.ts";
+const { Router } = require("express");
+const createMessage = require("../controllers/createMessage.ts");
 
 const addMessageRouter = Router();
 
-addMessageRouter.get("/", (_, res) => {
+addMessageRouter.get("/", (_: any, res: any) => {
   res.render("form");
 })
 addMessageRouter.post("/", createMessage);
 
-export {addMessageRouter};
+module.exports = addMessageRouter;

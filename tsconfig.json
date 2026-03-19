@@ -20,6 +20,12 @@
 
     "esModuleInterop": true,
     "skipLibCheck": true,
+
+    "module": "commonjs",
+
+    "types": ["node"],
+
+    "moduleDetection": "force"
   },
   "$schema": "https://www.schemastore.org/tsconfig",
   "_version": "2.0.0"
