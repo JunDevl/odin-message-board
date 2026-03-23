@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express-serve-static-core";
-import DB from "../models/messages.ts";
+import DB from "../models/messages.js";
 
 type RequestBody = { user: string, message: string };
 

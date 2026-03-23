@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import DB from "../models/messages.ts";
+import DB from "../models/messages.js";
 
 const getMessages: RequestHandler = async (_, res) => {
   const messages = await DB.retrieveAll("messages");

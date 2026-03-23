@@ -1,8 +1,8 @@
 import express from "express";
 import path from "path";
 
-import indexRouter from "./routes/indexRouter.ts";
-import addMessageRouter from "./routes/addMessageRouter.ts";
+import indexRouter from "./routes/indexRouter.js";
+import addMessageRouter from "./routes/addMessageRouter.js";
 
 const __dirname = path.resolve();
 
