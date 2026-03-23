@@ -1,6 +1,6 @@
 import { Router } from "express";
-import getMessages from "../controllers/getMessages.js";
-import showMessage from "../controllers/showMessage.js";
+import getMessages from "../controllers/getMessages.ts";
+import showMessage from "../controllers/showMessage.ts";
 
 const indexRouter = Router();
 

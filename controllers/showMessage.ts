@@ -1,6 +1,7 @@
-import DB from "../models/messages.js";
+import type { RequestHandler } from "express";
+import DB from "../models/messages.ts";
 
-const showMessage = async (req/*: any*/, res/*: any*/) => {
+const showMessage: RequestHandler = async (req, res) => {
   const messageID = Number(req.params["messageID"]);
 
   if (isNaN(messageID)) throw new Error("Can't access a message that isn't real.");

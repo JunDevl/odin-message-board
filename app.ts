@@ -1,8 +1,8 @@
 import express from "express";
 import path from "path";
 
-import indexRouter from "./routes/indexRouter.js";
-import addMessageRouter from "./routes/addMessageRouter.js";
+import indexRouter from "./routes/indexRouter.ts";
+import addMessageRouter from "./routes/addMessageRouter.ts";
 
 const __dirname = path.resolve();
 
@@ -20,4 +20,4 @@ app.set("view engine", "ejs");
 app.use("/new", addMessageRouter);
 app.use("/", indexRouter);
 
-app.listen(PORT, (err/*: any*/) => err ? console.log(err) : console.log(`Listening on port ${PORT}\n`));
+app.listen(PORT, (err) => err ? console.log(err) : console.log(`Listening on port ${PORT}\n`));
