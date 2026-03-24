@@ -4,9 +4,12 @@ import DB from "../models/db.js";
 const showMessage: RequestHandler = async (req, res) => {
   const messageID = Number(req.params["messageID"]);
 
-  if (isNaN(messageID)) throw new Error("Can't access a message that isn't real.");
+  if (isNaN(messageID)) {
+    res.redirect("/");
+    return;
+  };
 
-  const message = await DB.retrieveRow("messages", messageID);
+  const [message] = await DB.retrieveRow(messageID);
 
   res.render("message", { message });
 };

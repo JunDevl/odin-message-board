@@ -6,56 +6,59 @@ import postgres from "postgres";
 
 const sql = postgres(`postgresql://${process.env["ROLE_NAME"]}:${process.env["DB_PASSWORD"]}@${process.env["HOST_NAME"]}${process.env["DATABASE_PORT"] ? `:${process.env["DATABASE_PORT"]}` : ""}/${process.env["DATABASE_NAME"]}${process.env["URI_DB_PARAMS"] ? `?${process.env["URI_DB_PARAMS"]}` : ""}`);
 
-const generateDatabase = <TableName extends string, Table extends Record<string, any>>() => {
-  type WritableColumn = Exclude<keyof Table, "id"> & string;
-  type ValidRecord = Omit<Table, "id">;
+type Message = {
+  readonly id: number,
+  text: string,
+  username: string,
+  readonly created_at: number
+}
 
-  async function retrieveRow(table: TableName, id: number) {
+type ReadonlyProperties = "id" | "created_at";
+
+const generateDatabase = <Table extends Record<string, any>>(table: string) => {
+  type WritableColumn = Exclude<keyof Table, ReadonlyProperties> & string;
+  type ValidRecord = Omit<Table, ReadonlyProperties> & Record<string, any>;
+
+  async function retrieveRow(id: number) {
     try {
-      const row = await sql`SELECT * FROM ${table} WHERE ${table}.id = ${id}`;
+      const row = await sql`SELECT * FROM ${sql(table)} WHERE id = ${id};`;
 
-      return row;
-    } catch (error) {
+      return <unknown>row as Message[];
+    } catch (error: any) {
       console.log(error);
+      throw new Error(error);
     }
   };
 
-  async function retrieveAll(table: TableName) {
+  async function retrieveAll() {
     try {
-      const all = await sql`SELECT * FROM ${table}`;
+      const all = await sql`SELECT * FROM ${sql(table)};`;
 
-      return all;
-    } catch (error) {
+      return <unknown>all as Message[];
+    } catch (error: any) {
       console.log(error);
+      throw new Error(error);
     }
   }
 
-  async function createRow(table: TableName, columns: WritableColumn[] , ...items: ValidRecord[]) {
+  async function createRow(columns: WritableColumn[] , ...items: ValidRecord[]) {
     try {
-      const columnsSequence = columns.reduce((prev, next) => `${prev}, ${next}` as any);
-
-      const itemsSequence = items
-        .map(item => `(${
-          columns.reduce((prev, next) => `${item[prev]}, ${item[next]}` as any)
-        })`)
-        .reduce((prev, next) => `${prev}, ${next}`);
-
-      const inserted = await sql`
+      await sql`
         INSERT INTO ${table} 
-          (${columnsSequence})
+          ${sql(columns as string[])}
         VALUES
-          ${itemsSequence};`;
+          ${sql(items as Record<string, any>, columns)};`;
 
       return true;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      return false;
+      throw new Error(error);
     }
   }
 
   return { retrieveRow, retrieveAll, createRow };
 };
 
-const DB = generateDatabase();
+const DB = generateDatabase<Message>("messages");
 
 export default DB;
