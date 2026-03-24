@@ -21,7 +21,7 @@ const generateDatabase = <Table extends Record<string, any>>(table: string) => {
 
   async function retrieveRow(id: number) {
     try {
-      const row = await sql`SELECT * FROM ${sql(table)} WHERE id = ${id};`;
+      const row = await sql`SELECT * FROM ${sql(table)} WHERE id = ${id}`;
 
       return <unknown>row as Message[];
     } catch (error: any) {
@@ -32,7 +32,7 @@ const generateDatabase = <Table extends Record<string, any>>(table: string) => {
 
   async function retrieveAll() {
     try {
-      const all = await sql`SELECT * FROM ${sql(table)};`;
+      const all = await sql`SELECT * FROM ${sql(table)}`;
 
       return <unknown>all as Message[];
     } catch (error: any) {
@@ -41,13 +41,10 @@ const generateDatabase = <Table extends Record<string, any>>(table: string) => {
     }
   }
 
-  async function createRow(columns: WritableColumn[] , ...items: ValidRecord[]) {
+  async function createRow(item: ValidRecord) {
     try {
       await sql`
-        INSERT INTO ${table} 
-          ${sql(columns as string[])}
-        VALUES
-          ${sql(items as Record<string, any>, columns)};`;
+        INSERT INTO ${sql(table)} ${sql(item as Record<string, any>, "text", "username")}`;
 
       return true;
     } catch (error: any) {

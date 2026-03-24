@@ -11,7 +11,7 @@ const createMessage: RequestHandler = async(req: any, res) => {
     username: user
   }
 
-  const success = await DB.createRow(["text", "username"], messageRecord);
+  const success = await DB.createRow(messageRecord);
 
   if (!success) throw new Error("A database error ocurred.");
 

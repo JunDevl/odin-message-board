@@ -1,0 +1,74 @@
+:root {
+  font-size: 24px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  min-height: 100dvh;
+}
+
+.messages {
+  width: 70dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  flex: 1;
+  background-color: beige;
+  gap: 1rem;
+}
+
+ul,
+ol {
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  justify-content: start;
+}
+
+li {
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  border: 1px solid black;
+
+  &>.user {
+    vertical-align: super;
+    color: grey;
+  }
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button,
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 100vh;
+  background-color: oklch(70% 0.16 253);
+
+  &:hover {
+    background-color: oklch(65% 0.16375 253);
+  }
+
+  &:active {
+    background-color: oklch(60% 0.16375 253);
+  }
+}
