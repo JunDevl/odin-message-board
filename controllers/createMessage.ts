@@ -1,16 +1,19 @@
 import type { RequestHandler } from "express-serve-static-core";
-import DB from "../models/messages.js";
+import DB from "../models/db.js";
 
 type RequestBody = { user: string, message: string };
 
 const createMessage: RequestHandler = async(req: any, res) => {
   const { user, message } = req.body as RequestBody;
 
-  const success = await DB.createRow("messages", {
+  const messageRecord = {
     text: message,
-    username: user,
-    added: new Date()
-  });
+    username: user
+  }
+
+  const success = await DB.createRow("messages", ["text", "username"], messageRecord);
+
+  if (!success) throw new Error("A database error ocurred.");
 
   res.redirect("/");
 }

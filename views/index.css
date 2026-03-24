@@ -1,0 +1,44 @@
+:root {}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+}
+
+ul,
+ol {
+  list-style: none;
+  border-radius: 10px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+li {
+  border: 1px solid black;
+  flex: 1;
+}
+
+button,
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 100vh;
+  background-color: oklch(70% 0.16 253);
+
+  &:hover {
+    background-color: oklch(65% 0.16375 253);
+  }
+
+  &:active {
+    background-color: oklch(60% 0.16375 253);
+  }
+}

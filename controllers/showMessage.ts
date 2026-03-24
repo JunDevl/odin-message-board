@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import DB from "../models/messages.js";
+import DB from "../models/db.js";
 
 const showMessage: RequestHandler = async (req, res) => {
   const messageID = Number(req.params["messageID"]);
